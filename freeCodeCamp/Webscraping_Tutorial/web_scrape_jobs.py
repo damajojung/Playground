@@ -10,6 +10,10 @@ folder_name = "job_openings"
 if not os.path.exists(folder_name):
     os.makedirs(folder_name)
 
+print('Put in some locations where you do not want to work: ')
+unfavorable_location = input('>')
+print(f'Filtering out: {unfavorable_location}')
+
 
 def find_jobs():   
     html_text = requests.get('https://data-jobs.ch/search?terms=Data+Scientist').text
@@ -27,12 +31,13 @@ def find_jobs():
             except:
                 print("An exception occurred")
 
-            with open(f'{folder_name}/{idx}.txt') as f:
-                f.write(f'Job title: {title.strip()}\n')
-                f.write(f'Location: {location.strip()}\n')
-                f.write(f'Company Name: {company.strip()}\n')
-                f.write(f'More Info: {more_info.strip()}\n')
-            print(f'File saved: {idx}')
+            if location not in [unfavorable_location]:
+                with open(f'{folder_name}/{idx}.txt', 'w') as f:
+                    f.write(f'Job title: {title.strip()}\n')
+                    f.write(f'Location: {location.strip()}\n')
+                    f.write(f'Company Name: {company.strip()}\n')
+                    f.write(f'More Info: {more_info.strip()}\n')
+                print(f'File saved: {idx}')
 
 
 if __name__ == '__main__':
