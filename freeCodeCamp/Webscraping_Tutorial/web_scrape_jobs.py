@@ -28,10 +28,10 @@ def find_jobs():
                 print("An exception occurred")
 
             with open(f'{folder_name}/{idx}.txt') as f:
-                f.write(f'Job title: {title.strip()}')
-                f.write(f'Location: {location.strip()}')
-                f.write(f'Company Name: {company.strip()}')
-                f.write(f'More Info: {more_info.strip()}')
+                f.write(f'Job title: {title.strip()}\n')
+                f.write(f'Location: {location.strip()}\n')
+                f.write(f'Company Name: {company.strip()}\n')
+                f.write(f'More Info: {more_info.strip()}\n')
             print(f'File saved: {idx}')
 
 
