@@ -4,9 +4,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Function to load embeddings from a pickle file
-def load_embeddings(pickle_file):
-    with open(pickle_file, 'rb') as file:
-        embeddings = pickle.load(file)
+def load_embeddings(uploaded_file):
+    embeddings = pickle.load(uploaded_file)
     return embeddings
 
 # Streamlit app
